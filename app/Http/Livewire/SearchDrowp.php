@@ -24,6 +24,8 @@ class SearchDrowp extends Component
 
             return;
         }
+        
+     
 
         $response = Http::get('https://itunes.apple.com/search/?term=' . $this->search . '&limit=10');
         //  dd($response->json());

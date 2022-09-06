@@ -12,14 +12,18 @@ class FilterComponent extends Component
   public $category = [];
   public $selectedField = [];
 
-
-
-
   public function onchange($checked, $value)
   {
     if ($checked) {
-
+     
       $this->selectedField = [...$this->selectedField, $value];
+      
+    }else{
+
+     
+      array_splice($this->selectedField,  array_search($value, $this->selectedField),1); 
+          
+
     }
   }
   public function render()

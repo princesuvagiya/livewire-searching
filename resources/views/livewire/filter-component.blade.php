@@ -2,13 +2,14 @@
     display: flex;">
 
     <div class="bg-white ml-4 mt-32">
-        <h1>Price</h1>
+        <h1>Categores</h1>
         @foreach($category as $cat)
         <div class="mb-4">
             <div class="flex items-center mb-4">
                 <input id="default-checkbox" value="{{ $cat }}" wire:click="onchange($event.target.checked, $event.target.value)" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                 <label for="default-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ $cat }}</label>
             </div>
+
         </div>
         @endforeach
     </div>
@@ -19,8 +20,8 @@
             <div class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
                 @foreach( $products as $product)
 
-                @if( count($selectedField) > 0)
-
+                @if(count($selectedField) > 0)
+            
                 @if(in_array($product['category'],$selectedField))
                 <a href="#" class="group border-solid border-2 border-sky-500">
                     <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">

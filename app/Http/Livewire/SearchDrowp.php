@@ -16,22 +16,21 @@ class SearchDrowp extends Component
 
     public function updatedSearch($newvalue)
     {
-     
-        if(strlen($this->search) > 3){
-        
-             $this->searchResults = [];
 
-        
-              return;
+        if (strlen($this->search) > 3) {
 
-        } 
+            $this->searchResults = [];
 
-        $response =Http::get('https://itunes.apple.com/search/?term=' . $this->search .'&limit=10');
+
+            return;
+        }
+
+        $response = Http::get('https://itunes.apple.com/search/?term=' . $this->search . '&limit=10');
         //  dd($response->json());
-      
-         $this->searchResults = $response->json()['results'];
-         //dd($this->searchResults);
-    
+
+        $this->searchResults = $response->json()['results'];
+        //dd($this->searchResults);
+
 
     }
 

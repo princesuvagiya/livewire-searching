@@ -11,21 +11,36 @@ class FilterComponent extends Component
 
   public $category = [];
   public $selectedField = [];
+  public $productlimit = 1;
+  public $displayProduct = [];
 
   public function onchange($checked, $value)
   {
-    if ($checked) {
-     
-      $this->selectedField = [...$this->selectedField, $value];
-      
-    }else{
 
-     
-      array_splice($this->selectedField,  array_search($value, $this->selectedField),1); 
-          
+      if ($checked) {
 
-    }
+          $this->selectedField = [...$this->selectedField, $value];
+      } else {
+
+          array_splice($this->selectedField,  array_search($value, $this->selectedField), 1);
+      }
+      $this->displayProduct = [];
+      foreach ($this->productData as $product) {
+
+
+          if (in_array($product['category'], $this->selectedField)) {
+
+              $this->displayProduct = [...$this->displayProduct, $product];
+          }
+      }
   }
+
+  public function Productlimit()
+  {
+
+      $this->productlimit = $this->productlimit + 1;
+  }
+
   public function render()
   {
     $response = Http::get('https://fakestoreapi.com/products');
@@ -41,7 +56,7 @@ class FilterComponent extends Component
         $this->category = [...$this->category, $product['category']];
       }
     }
+    return view('livewire.filter-component', ['products' => $this->productData, 'category'=>$this->category, 'selectedField' => $this->selectedField, 'productlimit' => $this->productlimit ]);
 
-    return view('livewire.filter-component', ['products' => $this->productData, 'category' => $this->category, 'selectedField' => $this->selectedField]);
   }
 }

@@ -13,7 +13,7 @@ class FilterComponent extends Component
   public $selectedField = [];
   public $productlimit = 1;
   public $displayProduct = [];
-
+  
   public function onchange($checked, $value)
   {
 

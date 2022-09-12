@@ -55,6 +55,6 @@ Route::middleware('auth')->group(function () {
         ->name('logout');
 });
 
-Route::get('chat' ,'chat-room')
-      ->middleware('auth')
-      ->layout('layouts.auth');
+Route::view('chat' ,'chat')
+      ->middleware('auth');
+    

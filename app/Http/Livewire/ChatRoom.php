@@ -45,7 +45,7 @@ class ChatRoom extends Component
             $this->addError('messageBody' , 'Message Body is required.');
             return;
         }
-        $message =Auth::user()->messages()->create([
+        $message =Auth::user()->$this->messages()->create([
           
                 'body' =>$body,
  
